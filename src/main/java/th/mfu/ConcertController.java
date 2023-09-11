@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ConcertController {
     // TODO: create hashmap of concerts for storing data
-    private static int nextId = 1;
+    private int nextId = 1;
     private HashMap<Integer, Concert> concertMap = new HashMap<Integer, Concert>();
 
     //TODO: add initbinder to convert date
@@ -47,12 +47,12 @@ public class ConcertController {
     }
 
     @PostMapping("/concerts")
-    public String saveConcert(@ModelAttribute Concert concert) {
+    public String saveConcert(@ModelAttribute Concert con) {
         // TODO: add concert to list of concerts
-        concert.setId(nextId);
+        con.setId(nextId);
         
         // TODO: increment nextId
-        concerts.put(nextId, concert);
+        concertMap.put(nextId, con);
         nextId++;
         // TODO: redirect to list concerts
         return "redirect:/concerts";
